@@ -76,8 +76,8 @@ namespace ConsoleApp1
                 goto end;
             }
 
-            var listPossible = new List<int>();
-            var listParent = new List<int>();
+            var listPossible = new LinkedList<int>();
+            var listParent = new LinkedList<int>();
             var pathList = new List<NodePath>();
 
             var nodeList = new List<Node>(nodes); //แปลง nodes เป็น List
@@ -86,10 +86,11 @@ namespace ConsoleApp1
             var currentNode = nodes[nodeIndex];
             allPosibleMoveNode.Enqueue(currentNode.nodeId); //Node ทั้งหมดที่สามารถเดินไปได้
 
-            listPossible.Add(currentNode.nodeId);
+            listPossible.AddLast(currentNode.nodeId);
 
             var parentNode = new Queue<int>();
             parentNode.Enqueue(-1); //Node ก่อนหน้านี้ (parent node) ที่ใส่ -1 ตอนแรกเพราะ node มันไม่ได้เอามาจากใคร (currentNode ตอนนี้เป็นตัวแรก)
+            listParent.AddLast(-1);
 
             var distanceOfEachNode = new Queue<int>();
             distanceOfEachNode.Enqueue(moveCount); //บอกจำนวนที่จะต้องเดินใน Queue ของ allPosileMoveNode ว่าเหลืออีกกี่รอบ
@@ -113,24 +114,20 @@ namespace ConsoleApp1
                 {
                     tempNodeIndex = nodeList.FindIndex(x => x.nodeId == allPosibleMoveNode.First());
                     tempNode = nodes[tempNodeIndex].connectedNode; //หา Connect node ของ Node ตัวแรกใน Queue ว่า Connect กับ Node ไหนบ้าง
-
                     for (int i = 0; i < tempNode.Length; i++) //loop Connect node ทั้งหมด
                     {
                         if (tempNode[i] == parentNode.First()) //check ว่า connect node ตอนนี้เป็น node parent หรือไม่
                         {
                             continue;
                         }
-
                         //if (allPosibleMoveNode.Contains(tempNode[i]))
                         //{
                         //    continue;
                         //}
-
                         allPosibleMoveNode.Enqueue(tempNode[i]); //แล้วเอามาใส่ใน allPosibleMoveNode
                         distanceOfEachNode.Enqueue(moveCount - 1); //ใส่จำนวนการเดินที่เหลือของ Node
                         parentNode.Enqueue(allPosibleMoveNode.First()); //ใส่ parent node ว่าเอามาจาก node ไหน
                     }
-
                     allPosibleMoveNode.Dequeue(); //เอา node ตัวแรกที่ได้ connect node มาแล้วออก (เพราะได้ข้อมูลครบแล้ว)
                     distanceOfEachNode.Dequeue(); //เอาจำนวนการเดินของ node ตัวแรกที่ได้ connect node มาแล้วออก (เพราะได้ข้อมูลครบแล้ว)
                     parentNode.Dequeue(); //เอา parent node ตัวแรกออก (เพราะได้ข้อมูลครบแล้ว)
@@ -140,16 +137,16 @@ namespace ConsoleApp1
             */
             #endregion
 
-            
+
             var nodeAdd = 0;
-            var listPosibleIndex = 0;
+            var listPathIndex = 0;
 
             while (moveCount > 0)
             {
                 nodeAdd = 0;
                 while (distanceOfEachNode.First() == moveCount) //check ว่าจำนวนที่จะต้องเดินของ Node ตัวแรก = moveCount หรือไม่
                 {
-                    tempNodeIndex = nodeList.FindIndex(x => x.nodeId == allPosibleMoveNode.First());
+                    tempNodeIndex = nodeList.FindIndex(x => x.nodeId == listPossible.ElementAt(listPathIndex));
                     tempNode = nodes[tempNodeIndex].connectedNode; //หา Connect node ของ Node ตัวแรกใน Queue ว่า Connect กับ Node ไหนบ้าง
 
                     for (int i = 0; i < tempNode.Length; i++) //loop Connect node ทั้งหมด
@@ -163,14 +160,16 @@ namespace ConsoleApp1
                         distanceOfEachNode.Enqueue(moveCount - 1); //ใส่จำนวนการเดินที่เหลือของ Node
                         parentNode.Enqueue(allPosibleMoveNode.First()); //ใส่ parent node ว่าเอามาจาก node ไหน
 
-                        listPossible.Add(tempNode[i]);
-                        listParent.Add(allPosibleMoveNode.First());
+                        listPossible.AddLast(tempNode[i]);
+                        listParent.AddLast(listPossible.ElementAt(listPathIndex));
                         nodeAdd++;
                     }
 
                     var node = allPosibleMoveNode.Dequeue(); //เอา node ตัวแรกที่ได้ connect node มาแล้วออก (เพราะได้ข้อมูลครบแล้ว)
                     distanceOfEachNode.Dequeue(); //เอาจำนวนการเดินของ node ตัวแรกที่ได้ connect node มาแล้วออก (เพราะได้ข้อมูลครบแล้ว)
                     var parent = parentNode.Dequeue(); //เอา parent node ตัวแรกออก (เพราะได้ข้อมูลครบแล้ว)
+
+                    listPathIndex++;
                 }
                 moveCount--;
             }
@@ -184,6 +183,11 @@ namespace ConsoleApp1
 
             for (int i = 0; i < tempCount; i++)
             {
+                if (allPosibleMoveNode.Count <= 0)
+                {
+                    break;
+                }
+
                 while (ListOfPosibleNode.Contains(allPosibleMoveNode.First()) || allPosibleMoveNode.First().Equals(currentNodeId))
                 {
                     allPosibleMoveNode.Dequeue();
