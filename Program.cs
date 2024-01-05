@@ -99,7 +99,7 @@ namespace ConsoleApp1
             */
             #endregion
 
-            
+
             var nodeAdd = 0;
             var listPosibleIndex = 0;
 
@@ -254,14 +254,14 @@ namespace ConsoleApp1
 
             //init first loop rollcount = 0
             {
-                var firstConnectedNodes = masterdata.Find(node=>node.nodeId == startId).connectedNode;
+                var firstConnectedNodes = masterdata.Find(node => node.nodeId == startId).connectedNode;
                 for (var i = 0; i < firstConnectedNodes.Length; i++)
                 {
                     outputPath.Add(new List<int>() { startId, firstConnectedNodes[i] });
                 }
             }
 
-            for(var i=0; i< outputPath.Count; i++)
+            for (var i = 0; i < outputPath.Count; i++)
                 Console.WriteLine($"init first step: {outputPath[i].ToStringList()}");
 
             //rollcount >= 1
@@ -269,12 +269,12 @@ namespace ConsoleApp1
             {
                 Console.WriteLine($"\n@ rollCount: {rollcount}");
 
-                for (var i=0; i< masterdata.Count; i++) //loop masterdata to add connected node after
+                for (var i = 0; i < masterdata.Count; i++) //loop masterdata to add connected node after
                 {
                     var data = masterdata[i];
                     var parentId = data.nodeId;
                     var copyOutput = new List<List<int>>(outputPath);
-                    var tempPaths = copyOutput.FindAll(nodes =>  nodes[rollcount] == parentId);
+                    var tempPaths = copyOutput.FindAll(nodes => nodes[rollcount] == parentId);
 
                     if (tempPaths.Count == 0)
                         continue;
@@ -282,12 +282,12 @@ namespace ConsoleApp1
                     Console.WriteLine($"---- (loop masters for {parentId}) adding children");
 
                     //try adding data.connectedNode after last element of those match parent
-                    for (var j=0; j< tempPaths.Count; j++)
+                    for (var j = 0; j < tempPaths.Count; j++)
                     {
                         var newPaths = new List<List<int>>();
-                        for (var k=0; k< data.connectedNode.Length; k++)
+                        for (var k = 0; k < data.connectedNode.Length; k++)
                         {
-                            var newNode = data.connectedNode[k]; 
+                            var newNode = data.connectedNode[k];
 
                             if (NO_REPEAT && tempPaths[j].Contains(newNode)) //do not add if path has repeated id
                                 continue;
@@ -303,7 +303,7 @@ namespace ConsoleApp1
                             copyOutput.InsertRange(insertIndex, newPaths);
                         }
                     }
-                    copyOutput.RemoveAll(nodes => nodes.Count-1 == rollcount && nodes[rollcount] == parentId);
+                    copyOutput.RemoveAll(nodes => nodes.Count - 1 == rollcount && nodes[rollcount] == parentId);
                     outputPath = copyOutput;
 
                     for (var z = 0; z < outputPath.Count; z++)
@@ -312,7 +312,7 @@ namespace ConsoleApp1
                 }
                 rollcount++;
             }
-            
+
             Console.WriteLine($"\n\nEND >>> count all path: {outputPath.Count}");
             for (var z = 0; z < outputPath.Count; z++)
                 Console.WriteLine($"Output[{z}]: {outputPath[z].ToStringList()}");

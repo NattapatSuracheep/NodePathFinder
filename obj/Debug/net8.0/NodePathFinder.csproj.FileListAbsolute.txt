@@ -1,0 +1,15 @@
+C:\Users\Varisoft-PC\Documents\Varisoft\NodePathFinder\bin\Debug\net8.0\NodePathFinder.exe
+C:\Users\Varisoft-PC\Documents\Varisoft\NodePathFinder\bin\Debug\net8.0\NodePathFinder.deps.json
+C:\Users\Varisoft-PC\Documents\Varisoft\NodePathFinder\bin\Debug\net8.0\NodePathFinder.runtimeconfig.json
+C:\Users\Varisoft-PC\Documents\Varisoft\NodePathFinder\bin\Debug\net8.0\NodePathFinder.dll
+C:\Users\Varisoft-PC\Documents\Varisoft\NodePathFinder\bin\Debug\net8.0\NodePathFinder.pdb
+C:\Users\Varisoft-PC\Documents\Varisoft\NodePathFinder\obj\Debug\net8.0\NodePathFinder.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Varisoft-PC\Documents\Varisoft\NodePathFinder\obj\Debug\net8.0\NodePathFinder.AssemblyInfoInputs.cache
+C:\Users\Varisoft-PC\Documents\Varisoft\NodePathFinder\obj\Debug\net8.0\NodePathFinder.AssemblyInfo.cs
+C:\Users\Varisoft-PC\Documents\Varisoft\NodePathFinder\obj\Debug\net8.0\NodePathFinder.csproj.CoreCompileInputs.cache
+C:\Users\Varisoft-PC\Documents\Varisoft\NodePathFinder\obj\Debug\net8.0\NodePathFinder.sourcelink.json
+C:\Users\Varisoft-PC\Documents\Varisoft\NodePathFinder\obj\Debug\net8.0\NodePathFinder.dll
+C:\Users\Varisoft-PC\Documents\Varisoft\NodePathFinder\obj\Debug\net8.0\refint\NodePathFinder.dll
+C:\Users\Varisoft-PC\Documents\Varisoft\NodePathFinder\obj\Debug\net8.0\NodePathFinder.pdb
+C:\Users\Varisoft-PC\Documents\Varisoft\NodePathFinder\obj\Debug\net8.0\NodePathFinder.genruntimeconfig.cache
+C:\Users\Varisoft-PC\Documents\Varisoft\NodePathFinder\obj\Debug\net8.0\ref\NodePathFinder.dll
