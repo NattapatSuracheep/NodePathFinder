@@ -19,18 +19,6 @@ jobs:
       - run:
           name: native-version
           command: dotnet --version
-      - run:
-          name: dotnet list
-          command: dotnet --list-sdks
-      # - run:
-      #     name: install dotnet
-      #     command: dotnet-install.ps1 -Channel 8.0 -Runtime windowsdesktop
-      - run:
-          name: install aspnet
-          command: dotnet-install.ps1 -Channel 8.0 -Runtime aspnetcore
-      - run:
-          name: version
-          command: dotnet --version
       # - run:
       #     name: trust
       #     command: dotnet dev-certs https --trust
