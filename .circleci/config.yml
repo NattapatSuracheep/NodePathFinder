@@ -9,12 +9,18 @@ jobs:
     executor:
       name: windows/default
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "ea:af:a4:23:5c:4a:01:5c:19:1f:50:73:9f:e2:85:5b"
       - checkout
   build:
     description: Build application with Release configuration
     executor:
       name: windows/default
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "ea:af:a4:23:5c:4a:01:5c:19:1f:50:73:9f:e2:85:5b"
       - checkout
       - run:
           name: "Build Application according to some given configuration"
