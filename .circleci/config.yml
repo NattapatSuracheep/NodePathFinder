@@ -17,11 +17,17 @@ jobs:
             - "ea:af:a4:23:5c:4a:01:5c:19:1f:50:73:9f:e2:85:5b"
       - checkout
       - run:
-          name: version
+          name: native-version
           command: dotnet --version
       - run:
+          name: dotnet list
+          command: dotnet --list-sdks
+      - run:
           name: check-cer
-          command: winget install Microsoft.DotNet.SDK.8
+          command: winget install Microsoft.DotNet.AspNetCore.8
+      - run:
+          name: version
+          command: dotnet --version
       # - run:
       #     name: trust
       #     command: dotnet dev-certs https --trust
