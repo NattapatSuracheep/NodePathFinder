@@ -317,7 +317,7 @@ namespace ConsoleApp1
             for (var z = 0; z < outputPath.Count; z++)
                 Console.WriteLine($"Output[{z}]: {outputPath[z].ToStringList()}");
 
-            Console.ReadLine();
+            Console.ReadLine(); //?
         }
     }
 }
