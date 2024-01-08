@@ -22,11 +22,11 @@ jobs:
       - run:
           name: "Install project dependencies"
           command: dotnet.exe restore
-      - store_artifacts:
-         path: C:\Users\circleci\project\bin\Release\net7.0
       - run:
           name: "Build Application according to some given configuration"
           command: dotnet.exe build --configuration Release
+      - store_artifacts:
+         path: C:\Users\circleci\project\bin\Release\net7.0
 workflows:
   test_and_build:
     jobs:
