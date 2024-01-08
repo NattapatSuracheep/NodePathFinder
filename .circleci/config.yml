@@ -10,6 +10,7 @@ jobs:
       name: windows/default
     environment:
       DOTNET_CLI_TELEMETRY_OPTOUT : true
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -21,9 +22,9 @@ jobs:
       - run:
           name: check-cer
           command: dotnet dev-certs https --check
-      - run:
-          name: trust
-          command: dotnet dev-certs https --trust
+      # - run:
+      #     name: trust
+      #     command: dotnet dev-certs https --trust
       - run:
           name: "Install project dependencies"
           command: dotnet.exe restore
