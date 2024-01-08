@@ -22,9 +22,12 @@ jobs:
       - run:
           name: dotnet list
           command: dotnet --list-sdks
+      # - run:
+      #     name: install dotnet
+      #     command: dotnet-install.ps1 -Channel 8.0 -Runtime windowsdesktop
       - run:
-          name: check-cer
-          command: winget install Microsoft.DotNet.AspNetCore.8
+          name: install aspnet
+          command: dotnet-install.ps1 -Channel 8.0 -Runtime aspnetcore
       - run:
           name: version
           command: dotnet --version
