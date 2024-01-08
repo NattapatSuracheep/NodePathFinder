@@ -14,6 +14,9 @@ jobs:
             - "ea:af:a4:23:5c:4a:01:5c:19:1f:50:73:9f:e2:85:5b"
       - checkout
       - run:
+          name: trust
+          command: dotnet dev-certs https --trust
+      - run:
           name: "Install project dependencies"
           command: dotnet.exe restore
   build:
