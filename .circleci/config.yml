@@ -24,9 +24,9 @@ jobs:
           command: dotnet.exe restore
       - run:
           name: "Build Application according to some given configuration"
-          command: dotnet.exe msbuild
+          command: dotnet.exe build --configuration Release --output C:\Users\circleci\project\bin\Build
       - store_artifacts:
-         path: C:\Users\circleci\project\bin\Debug\net7.0
+         path: C:\Users\circleci\project\bin\Build
 workflows:
   buildConsoleApp:
     jobs:
