@@ -4,7 +4,7 @@ orbs:
   windows: circleci/windows@5.0.0
 
 jobs:
-  test:
+  build:
     description: Setup and run application tests
     executor:
       name: windows/default
@@ -26,8 +26,8 @@ jobs:
           name: "Build Application according to some given configuration"
           command: dotnet.exe build --configuration Release
       - store_artifacts:
-         path: C:\Users\circleci\project\bin\Release
+         path: C:\Users\circleci\project\bin
 workflows:
   test_and_build:
     jobs:
-      - test
+      - build
