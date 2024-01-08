@@ -21,7 +21,7 @@ jobs:
           command: dotnet --version
       - run:
           name: check-cer
-          command: dotnet dev-certs https --check
+          command: winget install Microsoft.DotNet.SDK.8
       # - run:
       #     name: trust
       #     command: dotnet dev-certs https --trust
