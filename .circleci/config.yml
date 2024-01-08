@@ -26,7 +26,7 @@ jobs:
           name: "Build Application according to some given configuration"
           command: dotnet.exe build --configuration Release
       - store_artifacts:
-         path: C:\Users\circleci\project\bin\Release\net7.0
+         path: C:\Users\circleci\project\bin\Release
 workflows:
   test_and_build:
     jobs:
