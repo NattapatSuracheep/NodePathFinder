@@ -15,11 +15,13 @@ jobs:
       - checkout
       - run:
           name: version
-          command: dotnet --version
+          command: dotnet -v
+      - run:
+          name: check-cer
+          command: dotnet -c
       - run:
           name: trust
-          command: dotnet dev-certs https --trust
-          override: "true"
+          command: dotnet dev-certs https -t
       - run:
           name: "Install project dependencies"
           command: dotnet.exe restore
