@@ -8,6 +8,8 @@ jobs:
     description: Setup and run application tests
     executor:
       name: windows/default
+    environment:
+      DOTNET_CLI_TELEMETRY_OPTOUT : true
     steps:
       - add_ssh_keys:
           fingerprints:
