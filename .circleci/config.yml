@@ -13,16 +13,9 @@ jobs:
           fingerprints:
             - "ea:af:a4:23:5c:4a:01:5c:19:1f:50:73:9f:e2:85:5b"
       - checkout
-      - restore_cache:
-          keys:
-            - dotnet-packages-v1-{{ checksum "NodePathFinder.csproj" }}
       - run:
           name: "Install project dependencies"
           command: dotnet.exe restore
-      - save_cache:
-          paths:
-            - C:\Users\circleci\.nuget\packages
-          key: dotnet-packages-v1-{{ checksum "NodePathFinder.csproj" }}
   build:
     description: Build application with Release configuration
     executor:
